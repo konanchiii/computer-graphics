@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2</title>
+
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+        input { width: 45px; }
+
+        #panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="panel">
+        <p>
+            a:
+            x <input id="ax" type="number" value="3">
+            y <input id="ay" type="number" value="4">
+            z <input id="az" type="number" value="0">
+        </p>
+
+        <p>
+            b:
+            x <input id="bx" type="number" value="1">
+            y <input id="by" type="number" value="0">
+            z <input id="bz" type="number" value="0">
+        </p>
+
+        <p>Red: a | Green: b | Yellow: a + b</p>
+
+        <div id="results"></div>
+        <hr>
+        <div id="ray-results"></div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
