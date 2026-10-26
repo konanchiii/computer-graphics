@@ -39,6 +39,7 @@ const arrowSum = new THREE.ArrowHelper(direction, origin, 1, 0xffff00);
 
 scene.add(arrowA, arrowB, arrowSum);
 
+// Match arrow to vector
 function updateArrow(arrow, vector) {
     const length = vector.length();
     arrow.visible = length > 0;
@@ -49,6 +50,7 @@ function updateArrow(arrow, vector) {
     }
 }
 
+// Read vector inputs
 function updateVectors() {
     a.set(
         Number(document.getElementById("ax").value),
@@ -62,6 +64,7 @@ function updateVectors() {
         Number(document.getElementById("bz").value)
     );
 
+    // Sum and dot product
     sum.addVectors(a, b);
     const dot = a.dot(b);
 
@@ -71,10 +74,12 @@ function updateVectors() {
 
     let angle = "Undefined for a zero vector";
 
+    // Angle needs nonzero vectors
     if (a.length() > 0 && b.length() > 0) {
         angle = THREE.MathUtils.radToDeg(a.angleTo(b)).toFixed(2) + "°";
     }
 
+    // Show results
     document.getElementById("results").innerHTML = `
         a + b = (${sum.x.toFixed(2)}, ${sum.y.toFixed(2)}, ${sum.z.toFixed(2)})<br>
         a · b = ${dot.toFixed(2)}<br>

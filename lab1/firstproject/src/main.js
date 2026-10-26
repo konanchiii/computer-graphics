@@ -1,11 +1,11 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
-//scene
+// Scene
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
-//camera
+// Camera
 const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight, 
@@ -13,7 +13,7 @@ const camera = new THREE.PerspectiveCamera(
     1000);
 camera.position.set(0, 1, 4);
 
-//renderer
+// Renderer
 const renderer = new THREE.WebGLRenderer;
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -24,6 +24,7 @@ document.body.appendChild(renderer.domElement);
 );
 scene.add(cube); */
 
+// Wireframe sphere
 const geometry = new THREE.SphereGeometry(1, 30, 30);
 const material = new THREE.MeshBasicMaterial({ color: 0xFF69B4 });
 const sphere = new THREE.Mesh(geometry, material);
@@ -31,12 +32,15 @@ sphere.material.wireframe = true;
 scene.add(sphere);
 
 
+// Ambient lighting
 const light = new THREE.AmbientLight(0xffffff, 2.5);
 scene.add(light);
 
+// Mouse controls and timer
 const control = new OrbitControls(camera, renderer.domElement);
 const timer =  new THREE.Timer();
 
+// Rotate each frame
 function animate() {
     requestAnimationFrame(animate);
     timer.update();
@@ -49,6 +53,7 @@ function animate() {
 }
 animate();
 
+// Resize the view
 window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
